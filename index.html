@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FortyNine Parathas Cloud Kitchen | Noida Sector 49</title>
     <meta name="description" content="FortyNine Parathas - Fresh homemade parathas delivered hot in Noida Sector 49. Order online with cart & real-time availability.">
-    
-    <!-- PWA INSTALL -->
-    <link rel="manifest" href="data:application/manifest+json,{
-        'name': 'FortyNine Parathas',
-        'short_name': 'Parathas49',
-        'start_url': '.',
-        'display': 'standalone',
-        'background_color': '#7b1e1e',
-        'theme_color': '#ffb703',
-        'icons': [{'src': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiM3YjFlMWUiLz4KPHRleHQgeD0iOTYiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4paHPC9tZXh0Pgo8L3N2Zz4K', 'sizes': '192x192', 'type': 'image/svg+xml'}]
-    }">
-    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Arial', sans-serif; background: #fff8f0; color: #333; line-height: 1.6; }
@@ -44,7 +32,7 @@
         .menu-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; }
         .status-badge { position: absolute; top: 15px; right: 15px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
         .available { background: #4CAF50; color: #fff; }
-        .sold-out { background: #f44336; color: #fff; display: none; } /* HIDDEN */
+        .sold-out { background: #f44336; color: #fff; }
         .menu-item h3 { color: #7b1e1e; margin-bottom: 10px; }
         .price { font-size: 24px; font-weight: bold; color: #ffb703; margin: 10px 0; }
         .quantity-controls { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
@@ -59,16 +47,24 @@
         .close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #999; font-weight: bold; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #7b1e1e; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-size: 16px; transition: border-color 0.3s; font-family: Arial, sans-serif; }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #ffb703; box-shadow: 0 0 5px rgba(255,183,3,0.3); }
+        .form-group input, .form-group textarea, .form-group select { 
+            width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-size: 16px; 
+            transition: border-color 0.3s; font-family: Arial, sans-serif;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { 
+            outline: none; border-color: #ffb703; box-shadow: 0 0 5px rgba(255,183,3,0.3); 
+        }
         .order-summary { background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; }
         .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; }
         .testimonial { background: linear-gradient(135deg, #fff, #f9f9f9); padding: 30px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; }
         .stars { color: #ffb703; font-size: 24px; margin-bottom: 15px; }
         footer { background: #222; color: #fff; text-align: center; padding: 30px; margin-top: 80px; }
-        .install-banner { position: fixed; top: 0; left: 0; right: 0; background: linear-gradient(135deg, #7b1e1e, #ffb703); color: white; padding: 15px; text-align: center; z-index: 1001; display: none; box-shadow: 0 4px 20px rgba(123,30,30,0.5); }
-        .install-banner button { background: white; color: #7b1e1e; padding: 12px 25px; margin: 0 10px; border-radius: 25px; border: none; font-weight: bold; cursor: pointer; }
-        @media (max-width: 768px) { .stats { gap: 20px; } .stat-number { font-size: 24px; } header h1 { font-size: 32px; } .modal-content { margin: 10% auto; padding: 30px 20px; } }
+        @media (max-width: 768px) { 
+            .stats { gap: 20px; } 
+            .stat-number { font-size: 24px; } 
+            header h1 { font-size: 32px; } 
+            .modal-content { margin: 10% auto; padding: 30px 20px; }
+        }
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .error { color: #f44336; font-size: 14px; margin-top: 5px; display: none; }
@@ -76,13 +72,6 @@
     </style>
 </head>
 <body>
-    <!-- PWA INSTALL BANNER -->
-    <div class="install-banner" id="installBanner">
-        📱 Install FortyNine Parathas App for Quick Orders! 
-        <button onclick="installApp()">Install Now</button>
-        <button onclick="dismissInstall()" style="background:none; color:white; padding:10px;">✕</button>
-    </div>
-
     <!-- Hero Slider -->
     <header>
         <div class="hero-slider">
@@ -109,9 +98,9 @@
         <button class="btn" onclick="openModal()">🛒 View Menu & Order</button>
     </header>
 
-    <!-- Menu Section - ALL AVAILABLE NOW! -->
+    <!-- Menu Section -->
     <section id="menu">
-        <h2 class="fade-in">📋 Classic Parathas Menu (All Available!)</h2>
+        <h2 class="fade-in">📋 Classic Parathas Menu</h2>
         <div class="menu-grid">
             <div class="menu-item fade-in" data-price="25" data-name="Plain Tawa Paratha">
                 <div class="status-badge available">Available Now</div>
@@ -150,15 +139,12 @@
                 </div>
             </div>
             <div class="menu-item fade-in" data-price="70" data-name="Gobi Paratha">
-                <div class="status-badge available">Available Now</div> <!-- FIXED: AVAILABLE! -->
-                <img src="https://images.unsplash.com/photo-1568909856544-8f5f79f241ce?w=400&h=250&fit=crop" alt="Gobi Paratha" loading="lazy">
+                <div class="status-badge sold-out">Sold Out</div>
+                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=250&fit=crop" alt="Gobi Paratha" loading="lazy">
                 <h3>Gobi Paratha</h3>
                 <div class="price">₹70</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
-                    <span class="qty">0</span>
-                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
-                    <span class="cart-count" style="display:none;">in cart</span>
+                <div class="quantity-controls" style="opacity:0.5;">
+                    <span>Sold Out Today</span>
                 </div>
             </div>
             <div class="menu-item fade-in" data-price="65" data-name="Mooli Paratha">
@@ -207,13 +193,12 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>📱 Complete Your Order</h2>
             
-            <div id="orderSuccess" class="success" style="display:none;">✅ Order sent successfully to WhatsApp + Google Sheet!</div>
+            <div id="orderSuccess" class="success" style="display:none;">✅ Order sent successfully to WhatsApp!</div>
             
             <div class="order-summary" id="orderSummarySection">
                 <h4>Your Order:</h4>
                 <div id="modalOrderSummary">Add items to cart first</div>
                 <p><strong>Total: ₹<span id="modalTotal">0</span></strong></p>
-                <button class="btn" onclick="payWithUPI()" style="background: #4CAF50; margin: 10px 0;">💳 Pay via UPI/Card</button>
             </div>
             
             <form id="orderForm">
@@ -239,9 +224,8 @@
                     <label for="instructions">Special Instructions</label>
                     <textarea id="instructions" rows="3" placeholder="Extra butter, less spicy, no onion, etc... (optional)"></textarea>
                 </div>
-                <input type="text" id="paymentProof" placeholder="💳 UPI Transaction ID (after payment)" style="margin-bottom: 20px;">
                 
-                <button type="submit" class="btn" id="submitBtn" style="width:100%; margin-top:20px; background: #25D366;">🚀 Send Order to WhatsApp</button>
+                <button type="submit" class="btn" id="submitBtn" style="width:100%; margin-top:20px;">🚀 Send Order to WhatsApp</button>
             </form>
         </div>
     </div>
@@ -253,28 +237,11 @@
 
     <footer>
         <p>© 2025 FortyNine Parathas Cloud Kitchen | Noida Sector 49 | Delivery Only</p>
-        <p>📞 <strong>+91 98712 43514</strong> | Breakfast: 8AM-11AM | Dinner: 7PM-10PM</p>
+        <p>📞 <strong>91 98712 43514</strong> | Breakfast: 8AM-11AM | Dinner: 7PM-10PM</p>
     </footer>
 
-    <!-- RAZORPAY UPI -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    
     <script>
-        // PWA INSTALL
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installBanner').style.display = 'block';
-        });
-        function installApp() {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(() => deferredPrompt = null);
-            dismissInstall();
-        }
-        function dismissInstall() { document.getElementById('installBanner').style.display = 'none'; }
-
-        // Shopping Cart (YOUR ORIGINAL CODE)
+        // Shopping Cart
         let cart = JSON.parse(localStorage.getItem('parathaCart')) || {};
 
         function updateQty(btn, change) {
@@ -284,12 +251,19 @@
             const price = parseInt(item.dataset.price);
             let qty = parseInt(qtySpan.textContent);
 
+            // Check if sold out
+            if (item.querySelector('.status-badge').classList.contains('sold-out') && qty === 0) {
+                alert('This item is sold out today!');
+                return;
+            }
+
             qty = Math.max(0, qty + change);
             qtySpan.textContent = qty;
 
             if (qty > 0) {
                 cart[name] = { qty, price };
                 item.querySelector('.cart-count').style.display = 'inline';
+                item.querySelector('.qty-btn').disabled = false;
             } else {
                 delete cart[name];
                 item.querySelector('.cart-count').style.display = 'none';
@@ -315,47 +289,57 @@
             document.getElementById('cartItems').textContent = items > 0 ? `${items} items - ₹${total}` : 'No items in cart';
 
             const stickyBtn = document.getElementById('stickyBtn');
+            const viewCartBtn = document.getElementById('viewCartBtn');
+            
             if (items > 0) {
                 stickyBtn.classList.add('cart-full');
                 stickyBtn.innerHTML = `🛒 ${items} items (₹${total})`;
+                viewCartBtn.style.display = 'inline-block';
             } else {
                 stickyBtn.classList.remove('cart-full');
                 stickyBtn.innerHTML = '🛒 Order Now';
+                viewCartBtn.style.display = 'none';
             }
 
+            // Update modal summary
             const modalSummary = document.getElementById('modalOrderSummary');
             if (items > 0) {
                 modalSummary.innerHTML = summary.join('<br>');
                 document.getElementById('orderSummarySection').style.display = 'block';
             } else {
                 modalSummary.innerHTML = 'Please add items to your cart first';
+                document.getElementById('orderSummarySection').style.display = 'block';
             }
         }
 
         // Modal Functions
-        function openModal() { document.getElementById('orderModal').style.display = 'block'; document.body.style.overflow = 'hidden'; updateCartDisplay(); }
-        function closeModal() { document.getElementById('orderModal').style.display = 'none'; document.body.style.overflow = 'auto'; clearErrors(); }
-
-        // UPI Payment
-        function payWithUPI() {
-            const total = parseInt(document.getElementById('cartTotal').textContent.replace('₹', '')) * 100;
-            if (total === 0) return alert('Please add items first!');
-            const options = {
-                key: 'rzp_test_1DPcnK1fJIKTw7',
-                amount: total,
-                currency: 'INR',
-                name: 'FortyNine Parathas',
-                description: 'Noida Sector 49 Order',
-                handler: function(response) {
-                    document.getElementById('paymentProof').value = response.razorpay_payment_id;
-                    alert('✅ Payment Success! Continue to WhatsApp order.');
-                }
-            };
-            new Razorpay(options).open();
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+            updateCartDisplay();
         }
 
-        // Form Validation & WhatsApp
-        function clearErrors() { document.querySelectorAll('.error').forEach(error => error.style.display = 'none'); }
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            clearErrors();
+        }
+
+        // Form Validation
+        function clearErrors() {
+            const errors = document.querySelectorAll('.error');
+            errors.forEach(error => error.style.display = 'none');
+        }
+
+        function showError(id, message) {
+            clearErrors();
+            const error = document.getElementById(id);
+            error.textContent = message;
+            error.style.display = 'block';
+            error.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Form Submit
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -363,42 +347,59 @@
             const phone = document.getElementById('phone').value.trim();
             const address = document.getElementById('address').value.trim();
             const instructions = document.getElementById('instructions').value.trim();
-            const payment = document.getElementById('paymentProof').value.trim();
             const total = parseInt(document.getElementById('cartTotal').textContent.replace('₹', '')) || 0;
 
-            if (!name || !phone || !address || total === 0) {
-                alert('⚠️ Please fill all fields & add items!');
+            // Validation
+            if (!name) {
+                showError('nameError', 'Please enter your full name');
+                return;
+            }
+            if (!phone || !/^\d{10}$/.test(phone.replace(/\D/g, ''))) {
+                showError('phoneError', 'Please enter a valid 10-digit phone number');
+                return;
+            }
+            if (!address) {
+                showError('addressError', 'Please enter your delivery address');
+                return;
+            }
+            if (total === 0) {
+                showError('nameError', 'Please add items to your cart first');
                 return;
             }
 
-            // Google Sheet (Replace YOUR_SHEET_ID)
-            fetch('https://script.google.com/macros/s/YOUR_SHEET_ID/exec?' +
-                `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&items=${encodeURIComponent(JSON.stringify(cart))}&total=${total}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent(payment)}&instructions=${encodeURIComponent(instructions)}`)
-            .catch(() => {}); // Continues anyway
-
-            // WhatsApp to YOUR NUMBER
+            // Create WhatsApp message
             let orderText = `🍞 *FortyNine Parathas Order*\n\n`;
             orderText += `👤 *Name:* ${name}\n`;
             orderText += `📱 *Phone:* ${phone}\n`;
             orderText += `📍 *Address:* ${address}\n\n`;
             orderText += `🛒 *Order Details:*\n`;
+            
             for (let [itemName, data] of Object.entries(cart)) {
                 orderText += `• ${itemName} x${data.qty} = ₹${data.qty * data.price}\n`;
             }
-            orderText += `\n💰 *Total:* ₹${total}\n`;
-            if (payment) orderText += `💳 *Payment ID:* ${payment}\n`;
-            if (instructions) orderText += `\n📝 *Instructions:* ${instructions}\n`;
-            orderText += `\n⏰ *Time:* ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}`;
-
-            window.open(`https://wa.me/919871243514?text=${encodeURIComponent(orderText)}`, '_blank');
             
+            orderText += `\n💰 *Total Amount:* ₹${total}\n`;
+            if (instructions) orderText += `\n📝 *Special Instructions:* ${instructions}\n`;
+            orderText += `\n⏰ *Order Time:* ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}`;
+
+            // Open WhatsApp
+            const whatsappNumber = '919871243514'; // Your number without +91
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderText)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
             document.getElementById('orderSuccess').style.display = 'block';
+            document.getElementById('orderSummarySection').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+            
+            // Clear cart
             cart = {};
             localStorage.removeItem('parathaCart');
             updateCartDisplay();
         });
 
-        // Rest of your original animations
+        // Hero Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         setInterval(() => {
@@ -407,23 +408,60 @@
             slides[currentSlide].classList.add('active');
         }, 3000);
 
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.fade-in').forEach(element => {
+        // Animated Counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.dataset.target);
+                const increment = target / 100;
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    if (target % 1 === 0) {
+                        counter.textContent = Math.floor(current);
+                    } else {
+                        counter.textContent = current.toFixed(1);
+                    }
+                }, 30);
+            });
+        }
+
+        // Scroll Animations
+        function handleScroll() {
+            const fades = document.querySelectorAll('.fade-in');
+            fades.forEach(element => {
                 const rect = element.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
                     element.classList.add('visible');
                 }
             });
-        });
+        }
 
+        // Initialize
+        window.addEventListener('scroll', handleScroll);
         window.addEventListener('load', () => {
             updateCartDisplay();
-            // Counter animation code here...
+            animateCounters();
+            handleScroll();
         });
 
+        // Close modal on outside click or ESC key
         window.onclick = function(event) {
-            if (event.target.id === 'orderModal') closeModal();
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeModal();
+            }
         }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
