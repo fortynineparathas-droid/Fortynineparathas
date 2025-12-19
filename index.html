@@ -1,374 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FortyNine Parathas Cloud Kitchen | Noida Sector 49</title>
-    <meta name="description" content="FortyNine Parathas - Fresh homemade parathas delivered hot in Noida Sector 49. Order online with cart, UPI and WhatsApp.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FortyNine Parathas Cloud Kitchen | Noida Sector 49</title>
+  <meta
+    name="description"
+    content="FortyNine Parathas - Fresh homemade parathas delivered hot in Noida Sector 49. Order online with cart, UPI and WhatsApp."
+  />
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; background: #fff8f0; color: #333; line-height: 1.6; }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        header { background: linear-gradient(135deg, #7b1e1e, #a83232); color: #fff; text-align: center; padding: 40px 20px; position: relative; }
+    header {
+      background: linear-gradient(135deg, #7b1e1e, #a83232);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
 
-        /* HERO IMAGE SLIDER – RIGHT TO LEFT */
-        .hero-slider-wrapper { overflow: hidden; border-radius: 18px; max-width: 900px; margin: 0 auto 25px; }
-        .hero-slider { display: flex; width: 300%; animation: slideParathas 18s infinite; }
-        .hero-slide { flex: 0 0 100%; height: 260px; background-size: cover; background-position: center; }
+    /* HERO SLIDER */
+    .hero-slider-wrapper {
+      overflow: hidden;
+      border-radius: 18px;
+      max-width: 900px;
+      margin: 0 auto 25px;
+    }
+    .hero-slider {
+      display: flex;
+      width: 300%;
+      animation: slideParathas 18s infinite;
+    }
+    .hero-slide {
+      flex: 0 0 100%;
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+    }
+    @keyframes slideParathas {
+      0% { transform: translateX(0%); }
+      30% { transform: translateX(0%); }
+      35% { transform: translateX(-100%); }
+      65% { transform: translateX(-100%); }
+      70% { transform: translateX(-200%); }
+      95% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
 
-        @keyframes slideParathas {
-            0%   { transform: translateX(0%);    }
-            30%  { transform: translateX(0%);    }
-            35%  { transform: translateX(-100%); }
-            65%  { transform: translateX(-100%); }
-            70%  { transform: translateX(-200%); }
-            95%  { transform: translateX(-200%); }
-            100% { transform: translateX(0%);    }
-        }
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    header p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
 
-        header h1 { font-size: 42px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        header p { font-size: 18px; margin-bottom: 20px; }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ffb703;
+    }
 
-        .stats { display: flex; justify-content: center; gap: 40px; margin: 20px 0; flex-wrap: wrap; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 32px; font-weight: bold; color: #ffb703; }
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #ffb703;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(255, 183, 3, 0.4);
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 183, 3, 0.6);
+    }
 
-        .btn { display: inline-block; padding: 15px 30px; background: #ffb703; color: #000; text-decoration: none; font-weight: bold; border-radius: 50px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(255,183,3,0.4); cursor: pointer; border: none; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,183,3,0.6); }
+    .order-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: #7b1e1e;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(123, 30, 30, 0.5);
+      text-decoration: none;
+    }
+    .order-btn.cart-full {
+      background: #ffb703;
+      color: #000;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
 
-        .order-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: #7b1e1e; color: #fff; padding: 15px 25px; border-radius: 50px; box-shadow: 0 4px 15px rgba(123,30,30,0.5); text-decoration: none; }
-        .order-btn.cart-full { background: #ffb703; color: #000; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+    h2 {
+      color: #7b1e1e;
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #ffb703;
+      margin: 15px auto;
+    }
 
-        section { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
-        h2 { color: #7b1e1e; font-size: 32px; text-align: center; margin-bottom: 40px; position: relative; }
-        h2::after { content: ''; display: block; width: 80px; height: 4px; background: #ffb703; margin: 15px auto; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .menu-item {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .menu-item { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; }
-        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-        .menu-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; }
+    .status-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .available {
+      background: #4caf50;
+      color: #fff;
+    }
 
-        .status-badge { position: absolute; top: 15px; right: 15px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-        .available { background: #4CAF50; color: #fff; }
+    .menu-item h3 {
+      color: #7b1e1e;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffb703;
+      margin: 10px 0;
+    }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: #ffb703;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .qty-btn:hover {
+      background: #ff9800;
+      transform: scale(1.1);
+    }
+    .cart-count {
+      background: #7b1e1e;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 15px;
+      font-size: 14px;
+      margin-left: 10px;
+    }
 
-        .menu-item h3 { color: #7b1e1e; margin-bottom: 10px; }
-        .price { font-size: 24px; font-weight: bold; color: #ffb703; margin: 10px 0; }
-        .quantity-controls { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
-        .qty-btn { width: 40px; height: 40px; border: none; background: #ffb703; border-radius: 50%; font-size: 18px; cursor: pointer; transition: all 0.3s; }
-        .qty-btn:hover { background: #ff9800; transform: scale(1.1); }
-        .cart-count { background: #7b1e1e; color:#fff; padding:2px 8px; border-radius:15px; font-size:14px; margin-left:10px;}
+    .cart-total {
+      text-align: center;
+      background: linear-gradient(135deg, #7b1e1e, #a83232);
+      color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+    }
 
-        .cart-total { text-align: center; background: linear-gradient(135deg, #7b1e1e, #a83232); color: #fff; padding: 20px; border-radius: 15px; margin: 30px 0; }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 40px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      animation: slideIn 0.3s;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #999;
+      font-weight: bold;
+    }
 
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-        .modal-content { background: #fff; margin: 5% auto; padding: 40px; border-radius: 15px; width: 90%; max-width: 500px; position: relative; animation: slideIn 0.3s; max-height: 90vh; overflow-y: auto; }
-        @keyframes slideIn { from{transform:translateY(-50px);opacity:0;}to{transform:translateY(0);opacity:1;} }
-        .close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #999; font-weight: bold; }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #7b1e1e;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+      font-family: Arial, sans-serif;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ffb703;
+      box-shadow: 0 0 5px rgba(255, 183, 3, 0.3);
+    }
 
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #7b1e1e; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-size: 16px; transition: border-color 0.3s; font-family: Arial,sans-serif; }
-        .form-group input:focus, .form-group textarea:focus { outline:none; border-color:#ffb703; box-shadow:0 0 5px rgba(255,183,3,0.3); }
+    .order-summary {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
 
-        .order-summary { background:#f8f9fa; padding:20px; border-radius:10px; margin:20px 0; }
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      margin-top: 80px;
+    }
 
-        footer { background:#222; color:#fff; text-align:center; padding:30px; margin-top:80px; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .fade-in { opacity:0; transform:translateY(30px); transition:all 0.8s; }
-        .fade-in.visible { opacity:1; transform:translateY(0); }
+    .error {
+      color: #f44336;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
 
-        .error { color:#f44336; font-size:14px; margin-top:5px; display:none; }
-
-        @media (max-width:768px){
-            header h1{font-size:32px;}
-            .hero-slide{height:220px;}
-            .modal-content{margin:10% auto; padding:30px 20px;}
-        }
-    </style>
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 32px;
+      }
+      .hero-slide {
+        height: 220px;
+      }
+      .modal-content {
+        margin: 10% auto;
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- HERO WITH MOVING PARATHA IMAGES -->
-    <header>
-        <div class="hero-slider-wrapper">
-            <div class="hero-slider">
-                <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200');"></div>
-                <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1603899122634-2f24c0ef4f95?w=1200');"></div>
-                <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=1200');"></div>
-            </div>
-        </div>
-
-        <h1>🍞 FortyNine Parathas</h1>
-        <p>Fresh Homemade • Delivered Hot • Noida Sector 49</p>
-
-        <div class="stats fade-in">
-            <div class="stat">
-                <div class="stat-number" data-target="12500">0</div>
-                <div>Parathas Served</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number" data-target="4.9">0</div>
-                <div>★ Rating</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number" data-target="98">0</div>
-                <div>% On Time</div>
-            </div>
-        </div>
-
-        <button class="btn" onclick="openModal()">🛒 View Menu & Order</button>
-    </header>
-
-    <!-- MENU -->
-    <section id="menu">
-        <h2 class="fade-in">📋 Classic Parathas Menu (All Available!)</h2>
-        <div class="menu-grid">
-            <div class="menu-item fade-in" data-price="25" data-name="Plain Tawa Paratha">
-                <div class="status-badge available">Available Now</div>
-                <img src="https://images.unsplash.com/photo-1668236543091-d03c22b488b3?w=800" alt="Plain Paratha" loading="lazy">
-                <h3>Plain Tawa Paratha</h3>
-                <div class="price">₹25</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
-                    <span class="qty">0</span>
-                    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
-                    <span class="cart-count" style="display:none;">in cart</span>
-                </div>
-            </div>
-
-            <div class="menu-item fade-in" data-price="35" data-name="Butter Tawa Paratha">
-                <div class="status-badge available">Available Now</div>
-                <img src="https://images.unsplash.com/photo-1604908176997-12518804f9d4?w=800" alt="Butter Paratha" loading="lazy">
-                <h3>Butter Tawa Paratha</h3>
-                <div class="price">₹35</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
-                    <span class="qty">0</span>
-                    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
-                    <span class="cart-count" style="display:none;">in cart</span>
-                </div>
-            </div>
-
-            <div class="menu-item fade-in" data-price="60" data-name="Aloo Paratha">
-                <div class="status-badge available">Available Now</div>
-                <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800" alt="Aloo Paratha" loading="lazy">
-                <h3>Aloo Paratha</h3>
-                <div class="price">₹60</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
-                    <span class="qty">0</span>
-                    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
-                    <span class="cart-count" style="display:none;">in cart</span>
-                </div>
-            </div>
-
-            <div class="menu-item fade-in" data-price="70" data-name="Gobi Paratha">
-                <div class="status-badge available">Available Now</div>
-                <img src="https://images.unsplash.com/photo-1668236543071-3f78eaefdd8c?w=800" alt="Gobi Paratha" loading="lazy">
-                <h3>Gobi Paratha</h3>
-                <div class="price">₹70</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
-                    <span class="qty">0</span>
-                    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
-                    <span class="cart-count" style="display:none;">in cart</span>
-                </div>
-            </div>
-
-            <div class="menu-item fade-in" data-price="65" data-name="Mooli Paratha">
-                <div class="status-badge available">Available Now</div>
-                <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800" alt="Mooli Paratha" loading="lazy">
-                <h3>Mooli Paratha</h3>
-                <div class="price">₹65</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
-                    <span class="qty">0</span>
-                    <button class="qty-btn" onclick="updateQty(this,1)">+</button>
-                    <span class="cart-count" style="display:none;">in cart</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="cart-total fade-in">
-            <h3>🛒 Cart Total: <span id="cartTotal">₹0</span></h3>
-            <p id="cartItems">No items in cart</p>
-            <button class="btn" id="viewCartBtn" onclick="openModal()" style="margin-top:15px;">📱 Place Order</button>
-        </div>
-    </section>
-
-    <!-- ORDER MODAL -->
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>📱 Complete Your Order</h2>
-
-            <div class="order-summary" id="orderSummarySection">
-                <h4>Your Order:</h4>
-                <div id="modalOrderSummary">Add items to cart first</div>
-                <p><strong>Total: ₹<span id="modalTotal">0</span></strong></p>
-            </div>
-
-            <form id="orderForm">
-                <div class="form-group">
-                    <label for="customerName">Full Name *</label>
-                    <input type="text" id="customerName" required placeholder="Enter your full name">
-                    <div class="error" id="nameError">Please enter your name</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" required placeholder="9871243514">
-                    <div class="error" id="phoneError">Please enter valid phone number</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Delivery Address *</label>
-                    <textarea id="address" rows="3" required placeholder="House number, street, Sector 49, Noida"></textarea>
-                    <div class="error" id="addressError">Please enter your delivery address</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="instructions">Special Instructions</label>
-                    <textarea id="instructions" rows="3" placeholder="Extra butter, less spicy, no onion, etc... (optional)"></textarea>
-                </div>
-
-                <button type="submit" class="btn" id="submitBtn" style="width:100%; margin-top:20px; background:#25D366;">🚀 Send Order to WhatsApp</button>
-            </form>
-        </div>
+  <!-- HERO WITH MOVING PARATHA IMAGES -->
+  <header>
+    <div class="hero-slider-wrapper">
+      <div class="hero-slider">
+        <!-- Mixed parathas -->
+        <div
+          class="hero-slide"
+          style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200');"
+        ></div>
+        <!-- Aloo paratha style -->
+        <div
+          class="hero-slide"
+          style="background-image:url('https://images.unsplash.com/photo-1588167865096-71c620227d92?w=1200');"
+        ></div>
+        <!-- Plain / butter tawa paratha -->
+        <div
+          class="hero-slide"
+          style="background-image:url('https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=1200');"
+        ></div>
+      </div>
     </div>
 
-    <!-- STICKY ORDER BUTTON -->
-    <a href="#" class="order-btn" id="stickyBtn" onclick="openModal()">🛒 Order Now</a>
+    <h1>🍞 FortyNine Parathas</h1>
+    <p>Fresh Homemade • Delivered Hot • Noida Sector 49</p>
 
-    <footer>
-        <p>© 2025 FortyNine Parathas Cloud Kitchen | Noida Sector 49 | Delivery Only</p>
-        <p>📞 <strong>+91 98712 43514</strong></p>
-    </footer>
+    <div class="stats fade-in">
+      <div class="stat">
+        <div class="stat-number" data-target="12500">0</div>
+        <div>Parathas Served</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" data-target="4.9">0</div>
+        <div>★ Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" data-target="98">0</div>
+        <div>% On Time</div>
+      </div>
+    </div>
 
-    <script>
-        // CART
-        let cart = {};
+    <button class="btn" onclick="openModal()">🛒 View Menu & Order</button>
+  </header>
 
-        function updateQty(btn, change) {
-            const item = btn.closest('.menu-item');
-            const qtySpan = item.querySelector('.qty');
-            const name = item.dataset.name;
-            const price = parseInt(item.dataset.price);
-            let qty = parseInt(qtySpan.textContent);
+  <!-- MENU -->
+  <section id="menu">
+    <h2 class="fade-in">📋 Classic Parathas Menu (All Available!)</h2>
+    <div class="menu-grid">
+      <!-- Plain Tawa -->
+      <div class="menu-item fade-in" data-price="25" data-name="Plain Tawa Paratha">
+        <div class="status-badge available">Available Now</div>
+        <img
+          src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=900"
+          alt="Plain Tawa Paratha"
+          loading="lazy"
+        />
+        <h3>Plain Tawa Paratha</h3>
+        <div class="price">₹25</div>
+        <div class="quantity-controls">
+          <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          <span class="cart-count" style="display:none;">in cart</span>
+        </div>
+      </div>
 
-            qty = Math.max(0, qty + change);
-            qtySpan.textContent = qty;
+      <!-- Butter Tawa -->
+      <div class="menu-item fade-in" data-price="35" data-name="Butter Tawa Paratha">
+        <div class="status-badge available">Available Now</div>
+        <img
+          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900"
+          alt="Butter Tawa Paratha"
+          loading="lazy"
+        />
+        <h3>Butter Tawa Paratha</h3>
+        <div class="price">₹35</div>
+        <div class="quantity-controls">
+          <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          <span class="cart-count" style="display:none;">in cart</span>
+        </div>
+      </div>
 
-            if (qty > 0) {
-                cart[name] = { qty, price };
-                item.querySelector('.cart-count').style.display = 'inline';
-            } else {
-                delete cart[name];
-                item.querySelector('.cart-count').style.display = 'none';
-            }
+      <!-- Aloo -->
+      <div class="menu-item fade-in" data-price="60" data-name="Aloo Paratha">
+        <div class="status-badge available">Available Now</div>
+        <img
+          src="https://images.unsplash.com/photo-1603899122634-2f24c0ef4f95?w=900"
+          alt="Aloo Paratha"
+          loading="lazy"
+        />
+        <h3>Aloo Paratha</h3>
+        <div class="price">₹60</div>
+        <div class="quantity-controls">
+          <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          <span class="cart-count" style="display:none;">in cart</span>
+        </div>
+      </div>
 
-            updateCartDisplay();
+      <!-- Gobi -->
+      <div class="menu-item fade-in" data-price="70" data-name="Gobi Paratha">
+        <div class="status-badge available">Available Now</div>
+        <img
+          src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=900"
+          alt="Gobi Paratha"
+          loading="lazy"
+        />
+        <h3>Gobi Paratha</h3>
+        <div class="price">₹70</div>
+        <div class="quantity-controls">
+          <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          <span class="cart-count" style="display:none;">in cart</span>
+        </div>
+      </div>
+
+      <!-- Mooli -->
+      <div class="menu-item fade-in" data-price="65" data-name="Mooli Paratha">
+        <div class="status-badge available">Available Now</div>
+        <img
+          src="https://images.unsplash.com/photo-1625938145064-1c45ea5c8b4a?w=900"
+          alt="Mooli Paratha"
+          loading="lazy"
+        />
+        <h3>Mooli Paratha</h3>
+        <div class="price">₹65</div>
+        <div class="quantity-controls">
+          <button class="qty-btn" onclick="updateQty(this,-1)">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
+          <span class="cart-count" style="display:none;">in cart</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-total fade-in">
+      <h3>🛒 Cart Total: <span id="cartTotal">₹0</span></h3>
+      <p id="cartItems">No items in cart</p>
+      <button class="btn" id="viewCartBtn" onclick="openModal()" style="margin-top:15px;">
+        📱 Place Order
+      </button>
+    </div>
+  </section>
+
+  <!-- ORDER MODAL -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>📱 Complete Your Order</h2>
+
+      <div class="order-summary" id="orderSummarySection">
+        <h4>Your Order:</h4>
+        <div id="modalOrderSummary">Add items to cart first</div>
+        <p><strong>Total: ₹<span id="modalTotal">0</span></strong></p>
+        <!-- UPI / CARD BUTTON (RAZORPAY) -->
+        <button
+          type="button"
+          class="btn"
+          style="background:#4caf50; margin-top:10px;"
+          onclick="payWithUPI()"
+        >
+          💳 Pay via UPI / Card
+        </button>
+      </div>
+
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input id="customerName" type="text" required placeholder="Enter your full name" />
+          <div class="error" id="nameError">Please enter your name</div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input id="phone" type="tel" required placeholder="9871243514" />
+          <div class="error" id="phoneError">Please enter valid phone number</div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address *</label>
+          <textarea
+            id="address"
+            rows="3"
+            required
+            placeholder="House number, street, Sector 49, Noida"
+          ></textarea>
+          <div class="error" id="addressError">Please enter your delivery address</div>
+        </div>
+
+        <div class="form-group">
+          <label for="instructions">Special Instructions</label>
+          <textarea
+            id="instructions"
+            rows="3"
+            placeholder="Extra butter, less spicy, no onion, etc... (optional)"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="paymentProof">UPI Transaction ID (optional)</label>
+          <input
+            id="paymentProof"
+            type="text"
+            placeholder="Will auto-fill after successful UPI payment"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn"
+          id="submitBtn"
+          style="width:100%; margin-top:20px; background:#25d366;"
+        >
+          🚀 Send Order to WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- STICKY ORDER BUTTON -->
+  <a href="#" class="order-btn" id="stickyBtn" onclick="openModal()">🛒 Order Now</a>
+
+  <footer>
+    <p>© 2025 FortyNine Parathas Cloud Kitchen | Noida Sector 49 | Delivery Only</p>
+    <p>📞 <strong>+91 98712 43514</strong></p>
+  </footer>
+
+  <!-- RAZORPAY UPI/CARD -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script>
+    let cart = {};
+
+    function updateQty(btn, change) {
+      const item = btn.closest(".menu-item");
+      const qtySpan = item.querySelector(".qty");
+      const name = item.dataset.name;
+      const price = parseInt(item.dataset.price);
+      let qty = parseInt(qtySpan.textContent);
+
+      qty = Math.max(0, qty + change);
+      qtySpan.textContent = qty;
+
+      if (qty > 0) {
+        cart[name] = { qty, price };
+        item.querySelector(".cart-count").style.display = "inline";
+      } else {
+        delete cart[name];
+        item.querySelector(".cart-count").style.display = "none";
+      }
+
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      let total = 0;
+      let items = 0;
+      let summary = [];
+
+      for (const [name, data] of Object.entries(cart)) {
+        total += data.qty * data.price;
+        items += data.qty;
+        summary.push(`${name} x${data.qty} (₹${data.price})`);
+      }
+
+      document.getElementById("cartTotal").textContent = "₹" + total;
+      document.getElementById("modalTotal").textContent = total;
+      document.getElementById("cartItems").textContent =
+        items > 0 ? `${items} items - ₹${total}` : "No items in cart";
+
+      const stickyBtn = document.getElementById("stickyBtn");
+      if (items > 0) {
+        stickyBtn.classList.add("cart-full");
+        stickyBtn.innerHTML = `🛒 ${items} items (₹${total})`;
+      } else {
+        stickyBtn.classList.remove("cart-full");
+        stickyBtn.innerHTML = "🛒 Order Now";
+      }
+
+      const modalSummary = document.getElementById("modalOrderSummary");
+      if (items > 0) {
+        modalSummary.innerHTML = summary.join("<br>");
+      } else {
+        modalSummary.innerHTML = "Please add items to your cart first";
+      }
+    }
+
+    function openModal() {
+      document.getElementById("orderModal").style.display = "block";
+      document.body.style.overflow = "hidden";
+      updateCartDisplay();
+    }
+    function closeModal() {
+      document.getElementById("orderModal").style.display = "none";
+      document.body.style.overflow = "auto";
+      clearErrors();
+    }
+
+    // Razorpay UPI/CARD
+    function payWithUPI() {
+      const total = parseInt(
+        document.getElementById("modalTotal").textContent || "0"
+      );
+      if (!total) {
+        alert("Please add items to your cart first.");
+        return;
+      }
+
+      const options = {
+        key: "rzp_test_1DPcnK1fJIKTw7", // replace with your Razorpay key for production
+        amount: total * 100,
+        currency: "INR",
+        name: "FortyNine Parathas",
+        description: "Order payment",
+        handler: function (response) {
+          document.getElementById("paymentProof").value =
+            response.razorpay_payment_id;
+          alert("✅ Payment successful! Now confirm order on WhatsApp.");
+        },
+      };
+      const rzp = new Razorpay(options);
+      rzp.open();
+    }
+
+    function clearErrors() {
+      document
+        .querySelectorAll(".error")
+        .forEach((e) => (e.style.display = "none"));
+    }
+
+    document
+      .getElementById("orderForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document
+          .getElementById("customerName")
+          .value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const address = document
+          .getElementById("address")
+          .value.trim();
+        const instructions = document
+          .getElementById("instructions")
+          .value.trim();
+        const paymentId = document
+          .getElementById("paymentProof")
+          .value.trim();
+        const total = parseInt(
+          document.getElementById("modalTotal").textContent || "0"
+        );
+
+        if (!name) {
+          document.getElementById("nameError").style.display = "block";
+          return;
+        }
+        if (
+          !phone ||
+          !/^\d{10}$/.test(phone.replace(/\D/g, ""))
+        ) {
+          document.getElementById("phoneError").style.display = "block";
+          return;
+        }
+        if (!address) {
+          document.getElementById("addressError").style.display = "block";
+          return;
+        }
+        if (!total) {
+          alert("Please add items to cart first.");
+          return;
         }
 
-        function updateCartDisplay() {
-            let total = 0;
-            let items = 0;
-            let summary = [];
-
-            for (let [name, data] of Object.entries(cart)) {
-                total += data.qty * data.price;
-                items += data.qty;
-                summary.push(`${name} x${data.qty} (₹${data.price})`);
-            }
-
-            document.getElementById('cartTotal').textContent = '₹' + total;
-            document.getElementById('modalTotal').textContent = total;
-            document.getElementById('cartItems').textContent = items > 0 ? `${items} items - ₹${total}` : 'No items in cart';
-
-            const stickyBtn = document.getElementById('stickyBtn');
-            if (items > 0) {
-                stickyBtn.classList.add('cart-full');
-                stickyBtn.innerHTML = `🛒 ${items} items (₹${total})`;
-            } else {
-                stickyBtn.classList.remove('cart-full');
-                stickyBtn.innerHTML = '🛒 Order Now';
-            }
-
-            const modalSummary = document.getElementById('modalOrderSummary');
-            if (items > 0) {
-                modalSummary.innerHTML = summary.join('<br>');
-            } else {
-                modalSummary.innerHTML = 'Please add items to your cart first';
-            }
+        let msg = `🍞 *FortyNine Parathas Order*\n\n`;
+        msg += `👤 *Name:* ${name}\n`;
+        msg += `📱 *Phone:* ${phone}\n`;
+        msg += `📍 *Address:* ${address}\n\n`;
+        msg += `🛒 *Order Details:*\n`;
+        for (const [itemName, data] of Object.entries(cart)) {
+          msg += `• ${itemName} x${data.qty} = ₹${
+            data.qty * data.price
+          }\n`;
         }
+        msg += `\n💰 *Total:* ₹${total}\n`;
+        if (paymentId) msg += `💳 *UPI Payment ID:* ${paymentId}\n`;
+        if (instructions) msg += `\n📝 *Instructions:* ${instructions}\n`;
+        msg += `\n⏰ *Time:* ${new Date().toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+        })}`;
 
-        // MODAL
-        function openModal(){ document.getElementById('orderModal').style.display='block'; document.body.style.overflow='hidden'; updateCartDisplay(); }
-        function closeModal(){ document.getElementById('orderModal').style.display='none'; document.body.style.overflow='auto'; clearErrors(); }
+        window.open(
+          `https://wa.me/919871243514?text=${encodeURIComponent(msg)}`,
+          "_blank"
+        );
 
-        // FORM + WHATSAPP
-        function clearErrors(){ document.querySelectorAll('.error').forEach(e=>e.style.display='none'); }
+        cart = {};
+        updateCartDisplay();
+        closeModal();
+      });
 
-        document.getElementById('orderForm').addEventListener('submit',function(e){
-            e.preventDefault();
-            const name=document.getElementById('customerName').value.trim();
-            const phone=document.getElementById('phone').value.trim();
-            const address=document.getElementById('address').value.trim();
-            const instructions=document.getElementById('instructions').value.trim();
-            const total=parseInt(document.getElementById('modalTotal').textContent)||0;
+    // Animated counters
+    function animateCounters() {
+      const counters = document.querySelectorAll(".stat-number");
+      counters.forEach((counter) => {
+        const target = parseFloat(counter.dataset.target);
+        let current = 0;
+        const inc = target / 100;
+        const timer = setInterval(() => {
+          current += inc;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent =
+            target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+        }, 30);
+      });
+    }
 
-            if(!name){document.getElementById('nameError').style.display='block';return;}
-            if(!phone || !/^\d{10}$/.test(phone.replace(/\D/g,''))){document.getElementById('phoneError').style.display='block';return;}
-            if(!address){document.getElementById('addressError').style.display='block';return;}
-            if(total===0){alert('Please add items to cart first');return;}
-
-            let orderText=`🍞 *FortyNine Parathas Order*\n\n`;
-            orderText+=`👤 *Name:* ${name}\n`;
-            orderText+=`📱 *Phone:* ${phone}\n`;
-            orderText+=`📍 *Address:* ${address}\n\n`;
-            orderText+=`🛒 *Order Details:*\n`;
-            for(let [itemName,data] of Object.entries(cart)){
-                orderText+=`• ${itemName} x${data.qty} = ₹${data.qty*data.price}\n`;
-            }
-            orderText+=`\n💰 *Total:* ₹${total}\n`;
-            if(instructions) orderText+=`\n📝 *Instructions:* ${instructions}\n`;
-            orderText+=`\n⏰ *Time:* ${new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'})}`;
-
-            window.open(`https://wa.me/919871243514?text=${encodeURIComponent(orderText)}`,'_blank');
-
-            cart={};
-            updateCartDisplay();
-            closeModal();
-        });
-
-        // ANIMATED COUNTERS
-        function animateCounters(){
-            const counters=document.querySelectorAll('.stat-number');
-            counters.forEach(counter=>{
-                const target=parseFloat(counter.dataset.target);
-                let current=0;
-                const increment=target/100;
-                const timer=setInterval(()=>{
-                    current+=increment;
-                    if(current>=target){current=target;clearInterval(timer);}
-                    counter.textContent = (target%1===0)?Math.floor(current):current.toFixed(1);
-                },30);
-            });
+    function handleScroll() {
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("visible");
         }
+      });
+    }
 
-        // SCROLL FADE
-        function handleScroll(){
-            document.querySelectorAll('.fade-in').forEach(el=>{
-                const rect=el.getBoundingClientRect();
-                if(rect.top<window.innerHeight && rect.bottom>0){el.classList.add('visible');}
-            });
-        }
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("load", () => {
+      handleScroll();
+      animateCounters();
+    });
 
-        window.addEventListener('scroll',handleScroll);
-        window.addEventListener('load',()=>{handleScroll();animateCounters();});
-        window.onclick=function(e){if(e.target.id==='orderModal')closeModal();}
-        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-    </script>
+    window.onclick = function (e) {
+      if (e.target.id === "orderModal") closeModal();
+    };
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
 </body>
 </html>
